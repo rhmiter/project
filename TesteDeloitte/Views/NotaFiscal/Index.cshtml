@@ -1,0 +1,71 @@
+﻿@model TesteDeloitte.Models.NotaFiscalViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <div class="pull-right">
+        <p>
+            <a href="@Url.Action("Insert")" class="btn btn-primary">Inserir Nota Fiscal</a>
+            <a href="@Url.Action("Report")" class="btn btn-primary">Relatório de Produtos</a>
+        </p>
+    </div>
+
+    <h2>Notas Fiscais</h2>
+
+    <table class="table table-striped" align="center">
+        <tr>
+            <th scope="col">
+                Código
+            </th>
+            <th scope="col">
+                Cliente
+            </th>
+            <th scope="col">
+                Produto
+            </th>
+            <th scope="col">
+                Valor
+            </th>
+            <th scope="col">
+                Observação
+            </th>
+            <th scope="col">
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Notas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacao)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Editar", "Edit", new
+                    {
+                        id = item.Id
+                        }) |
+                    @Html.ActionLink("Excluir", "Delete", new
+                    {
+                        id = item.Id
+    },
+                    new { onclick = "return confirm('Deseja mesmo deletar o registro?');" })
+                </td>
+            </tr>
+
+        }
+    </table>
+</div>

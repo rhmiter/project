@@ -1,0 +1,48 @@
+﻿@model TesteDeloitte.Models.RelatorioVendasProdutoViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Total de Vendas por Produto</h2>
+
+    <table class="table table-striped" align="center">
+        <tr>
+            <th scope="col">
+                Código
+            </th>
+            <th scope="col">
+                Produto
+            </th>
+            <th scope="col">
+                Qtde. Vendas
+            </th>
+            <th scope="col">
+                Total Vendas
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Lista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProdutoId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomeProduto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QtdeVendas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalVendas)
+                </td>
+            </tr>
+
+        }
+    </table>
+
+    <p>
+        <a href="@Url.Action("Index")" class="btn btn-primary"> <i class="fa fa-reply"></i>Voltar</a>
+    </p>
+</div>
